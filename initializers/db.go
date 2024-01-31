@@ -3,6 +3,7 @@ package initializers
 import (
 	"fmt"
 	"os"
+	"test_golang/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -18,4 +19,9 @@ func ConnectToDatabase(){
 	if err != nil {
 		fmt.Println("Failed to connect to database")
 	}
+}
+
+func SyncDB(){
+	// Migrate the schema
+	DB.AutoMigrate(&models.Post{})
 }
